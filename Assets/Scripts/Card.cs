@@ -2,21 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : ScriptableObject
+public class Card : MonoBehaviour
 {
-    [SerializeField] private string cardName;
-    [SerializeField] private string description;
+    [SerializeField] CardData cardData;
+   
+    private int delay;
+    private int duration;
 
-    [SerializeField] private int delay;
-    [SerializeField] private int duration;
+    private int populationDamage;
+    private int developmentDamage;
+    private float developmentSlow = 1;
+    // Start is called before the first frame update
+    void Start()
+    {
+        delay = cardData.Delay;
+        duration = cardData.Duration;
 
-    [SerializeField] private GameObject prefab;
+        if( cardData.GetType() == typeof(Crisis))
+        {
+            populationDamage = cardData.P
+        }
 
-    public string CardName => cardName;
-    public string Description => description;
+    }
 
-    public int Delay => delay;
-    public int Duration => duration;
-
-    public GameObject Prefab => prefab;
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
