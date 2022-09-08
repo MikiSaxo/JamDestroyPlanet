@@ -3,14 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newCardData", menuName = "ScriptableObjects/CardData", order = 1)]
 public class CardData : ScriptableObject
 {
-    enum CardType
+    public enum CardType
     {
         disaster,
         crisis,
-        coeff
+        multiplicator
     }
 
-    [SerializeField] private CardType cardType;
+    [SerializeField] private CardType typeCard;
 
     [SerializeField] private string cardName;
     [SerializeField] private string description;
@@ -20,14 +20,23 @@ public class CardData : ScriptableObject
 
     [SerializeField] private GameObject prefab;
 
-    [SerializeField] private int damage;
-
-    [SerializeField] private int coefmultiplicator = 1;
-
+    [Space(10)]
+    [Header("Disaster & Crisis")]
+    [Space(2)]
     [SerializeField] private int populationDamage;
+
+    [Space(10)]
+    [Header("Crisis")]
+    [Space(2)]
     [SerializeField] private int developmentDamage;
     [SerializeField] private float developmentSlow = 1;
 
+    [Space(10)]
+    [Header("Multiplicator")]
+    [Space(2)]
+    [SerializeField] private int coefmultiplicator = 1;
+
+    #region Getter
 
     public string CardName => cardName;
     public string Description => description;
@@ -37,12 +46,13 @@ public class CardData : ScriptableObject
 
     public GameObject Prefab => prefab;
 
-    public int Damage => damage;
-
-    public int CoefMultiplicator => coefmultiplicator;
-
     public int PopulationDamage => populationDamage;
     public int DevelopmentDamage => developmentDamage;
     public float DevelopmentSlow => developmentSlow;
+    public int CoefMultiplicator => coefmultiplicator;
+
+    public CardType TypeCard => typeCard;
+
+    #endregion
 }
 
