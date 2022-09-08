@@ -22,7 +22,7 @@ public class CardData : ScriptableObject
 
     [SerializeField] private int damage;
 
-    [SerializeField] private int coefmultiplicator;
+    [SerializeField] private int coefmultiplicator = 1;
 
     [SerializeField] private int populationDamage;
     [SerializeField] private int developmentDamage;

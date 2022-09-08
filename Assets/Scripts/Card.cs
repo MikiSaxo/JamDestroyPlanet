@@ -18,11 +18,6 @@ public class Card : MonoBehaviour
         delay = cardData.Delay;
         duration = cardData.Duration;
 
-        if( cardData.GetType() == typeof(Crisis))
-        {
-            populationDamage = cardData.P
-        }
-
     }
 
     // Update is called once per frame

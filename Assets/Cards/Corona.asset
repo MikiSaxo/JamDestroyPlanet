@@ -9,12 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e380623487dd440aa5ff5c85c4a251, type: 3}
-  m_Name: x2
+  m_Script: {fileID: 11500000, guid: 07958f2430145d54395f7f12fbf52c73, type: 3}
+  m_Name: Corona
   m_EditorClassIdentifier: 
-  cardName: x2
-  description: double
-  delay: 0
-  duration: 1
+  cardType: 1
+  cardName: Corona
+  description: Coronaaaaa
+  delay: 1
+  duration: 2
   prefab: {fileID: 8342866291088621213, guid: 819f26871810c7c4786b9448b90c43b9, type: 3}
-  coefmultiplicator: 2
+  damage: 3
+  coefmultiplicator: 1
+  populationDamage: 1
+  developmentDamage: 1
+  developmentSlow: 2
