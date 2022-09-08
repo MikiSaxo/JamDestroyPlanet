@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int years = 0;
-    [SerializeField] private int population;
-    [SerializeField] [Range(0, 100)] private float devellopmentPercentage;
+    [SerializeField] private int population = 1;
+    [SerializeField] [Range(0, 100)] private float devellopmentPercentage = 0;
 
     private void Start()
     {
@@ -23,4 +23,28 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void NewCards()
+    {
+
+    }
+
+    void AddPopulation(int percent)
+    {
+        population += ((population / 100) * percent);
+    }
+
+    void AddDevellopment(int percent)
+    {
+        population += percent;
+    }
+
+    void RemovePopulation(int percent)
+    {
+        population -= ((population / 100) * percent);
+    }
+
+    void RemoveDevellopment(int percent)
+    {
+        population -= percent;
+    }
 }
