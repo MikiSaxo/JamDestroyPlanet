@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gamemanager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    [SerializedField] private year = 0;
-    
-    void Start()
+    [SerializeField] private int years = 0;
+
+    private void Start()
     {
-        StartCoroutine();
+        
     }
 
-    void YearPlus()
+    void PlusYear()
     {
-        year++;
+        years++;
     }
 }
