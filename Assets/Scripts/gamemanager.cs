@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] [Range(0, 100)] private float devellopmentPercentage = 0;
 
     public TextMeshProUGUI yearsTxt;
+    public TextMeshProUGUI populationTxt;
 
 
     private void Start()
@@ -29,10 +30,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void ChangeYear()
+    {
+        yearsTxt.text = ("An " + years.ToString());
+    }
+
+    //Functions Add or Remove values
     void PlusYear()
     {
         years++;
-        yearsTxt.text = ("An " + years.ToString());
     }
 
     void AddPopulation(int percent)
