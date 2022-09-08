@@ -19,9 +19,15 @@ public class GameManager : MonoBehaviour
     }
 
     //Launch after using a card or takin one in inventory
+
     void NextTurn()
     {
         PlusYear();
+        if (population <= 0)
+        {
+            Win();
+        }
+
         if (devellopmentPercentage == 100)
         {
             Lose();
@@ -66,6 +72,11 @@ public class GameManager : MonoBehaviour
     }
 
     void Lose()
+    {
+
+    }
+
+    void Win()
     {
 
     }
