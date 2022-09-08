@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //Create cards for the nexT Turn
+    //Create cards for the next Turn
     void NewCards(List<Card> Cards)
     {
 
