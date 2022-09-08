@@ -13,19 +13,21 @@ public class GameManager : MonoBehaviour
         PlusYear();
     }
 
-    void PlusYear()
-    {
-        years++;
-    }
-
+    //Launch after using a card or takin one in inventory
     void NextTurn()
     {
 
     }
 
-    void NewCards()
+    //Create cards for the nexT Turn
+    void NewCards(List<Card> Cards)
     {
 
+    }
+
+    void PlusYear()
+    {
+        years++;
     }
 
     void AddPopulation(int percent)
