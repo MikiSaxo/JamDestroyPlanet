@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int years = 0;
     [SerializeField] private int population = 1;
     [SerializeField] [Range(0, 100)] private float devellopmentPercentage = 0;
+
+    public TextMeshProUGUI yearsTxt;
+
 
     private void Start()
     {
@@ -19,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //Create cards for the nexT Turn
+    //Create cards for the next Turn
     void NewCards(List<Card> Cards)
     {
 
@@ -28,6 +32,7 @@ public class GameManager : MonoBehaviour
     void PlusYear()
     {
         years++;
+        yearsTxt.text = ("An " + years.ToString());
     }
 
     void AddPopulation(int percent)
@@ -49,4 +54,6 @@ public class GameManager : MonoBehaviour
     {
         population -= percent;
     }
+
+    //Functions Art (FX meteor & others)
 }
