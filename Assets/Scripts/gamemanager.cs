@@ -21,7 +21,11 @@ public class GameManager : MonoBehaviour
     //Launch after using a card or takin one in inventory
     void NextTurn()
     {
-
+        PlusYear();
+        if (devellopmentPercentage == 100)
+        {
+            Lose();
+        }
     }
 
     //Create cards for the next Turn
@@ -61,5 +65,8 @@ public class GameManager : MonoBehaviour
         population -= percent;
     }
 
-    //Functions Art (FX meteor & others)
+    void Lose()
+    {
+
+    }
 }
