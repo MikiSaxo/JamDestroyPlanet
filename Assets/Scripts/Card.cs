@@ -1,28 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] CardData cardData;
+    private CardData cardData;
    
-    private int delay;
-    private int duration;
+    [System.NonSerialized] public int delay;
+    [System.NonSerialized] public int duration;
 
-    private int populationDamage;
-    private int developmentDamage;
-    private float developmentSlow = 1;
+    [System.NonSerialized] public int populationDamage;
+    [System.NonSerialized] public int developmentDamage;
+    [System.NonSerialized] public float developmentSlow = 1;
+
+    public CardData CardData => cardData;
     // Start is called before the first frame update
-    void Start()
+    public void Init(CardData data)
     {
+        cardData = data;
         delay = cardData.Delay;
         duration = cardData.Duration;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        populationDamage = cardData.PopulationDamage;
+        developmentDamage = cardData.DevelopmentDamage;
+        developmentSlow = cardData.DevelopmentSlow;
         
+
+
     }
 }
