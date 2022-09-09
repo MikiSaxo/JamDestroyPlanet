@@ -5,20 +5,26 @@ using UnityEngine.UI;
 
 public class SliderManager : MonoBehaviour
 {
+    private static SliderManager instance;
     [SerializeField] private Image[] _sliders;
     [SerializeField] private float[] _amountToReach;
     [SerializeField] private GameObject _fusee;
     [SerializeField] private Transform[] _pointfusee;
 
     private float t, t2, t3 = 0f;
-    private void Start()
+
+    private void Awake()
     {
-        ChangeSlidePop(0, .5f);
+        if(instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        instance = this;
     }
 
-    public void ChangeSlidePop(int index, float _amount)
+    public static void ChangeSlide(int index, float _amount)
     {
-        _amountToReach[index] = _amount;
+        instance._amountToReach[index] = _amount;
     }
 
     private void Update()

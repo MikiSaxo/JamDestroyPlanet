@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int years = 2021;
     [SerializeField] private int population = 800000;
     [SerializeField] [Range(0, 100)] private float devellopmentPercentage = 0;
+    [SerializeField] private int populationMax = 2000000;
 
     [Space(10)]
     [Header("UI Reference")]
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public Image devellopmentBar;
     public GameObject endTurnButton;
     public Transform cardSlotTransform;
+    public GameObject winObject;
+    public GameObject lostObject;
 
     [Space(10)]
     [Header("Gamerules")]
@@ -101,7 +104,7 @@ public class GameManager : MonoBehaviour
             Win();
         }
 
-        if (devellopmentPercentage == 100)
+        if (devellopmentPercentage >= 100)
         {
             Lose();
         }
@@ -121,7 +124,6 @@ public class GameManager : MonoBehaviour
     //Use card
     void UseCard(CardEffect card)
     {
-        Debug.Log("is used");
         RemovePopulation(card.populationDamage);
         RemoveDevellopment(card.developmentDamage);
         devellopmentSpeed *= card.developmentSlow;
@@ -175,36 +177,48 @@ public class GameManager : MonoBehaviour
     void AddPopulation(int percent)
     {
         population += ((population / 100) * percent);
-        ChangePopulation();
+        SliderManager.ChangeSlide(0, (float)population / (float)populationMax);
     }
 
     void AddDevellopment(int percent)
     {
         devellopmentPercentage += percent*devellopmentSpeed;
         devellopmentSpeed = 1;
-        ChangeDevellopment();
+        SliderManager.ChangeSlide(1, (float)devellopmentPercentage/100);
     }
 
     void RemovePopulation(int percent)
     {
         population -= ((population / 100) * percent);
-        ChangePopulation();
+        SliderManager.ChangeSlide(0, (float)population / (float)populationMax);
     }
 
     void RemoveDevellopment(int percent)
     {
         devellopmentPercentage -= percent;
-        ChangeDevellopment();
+        SliderManager.ChangeSlide(1, (float)devellopmentPercentage / 100);
     }
 
     void Lose()
     {
-
+        Debug.Log("Lose");
+        lostObject.SetActive(true);
+        foreach(Card card in currentCard)
+        {
+            Destroy(card.gameObject);
+            endTurnButton.SetActive(false);
+        }
     }
 
     void Win()
     {
-
+        Debug.Log("Win");
+        winObject.SetActive(true);
+        foreach (Card card in currentCard)
+        {
+            Destroy(card.gameObject);
+            endTurnButton.SetActive(false);
+        }
     }
 
     public static void PlayCard(Card card)
