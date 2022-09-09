@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Humanity information")]
     [Space(2)]
-    [SerializeField] private int years = 2021;
+    [SerializeField] public int years = 2021;
     [SerializeField] private int population = 800000;
     [SerializeField] [Range(0, 100)] private float devellopmentPercentage = 0;
 
