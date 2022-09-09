@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Create cards for the next Turn
+
     void NewCards(List<Card> Cards)
     {
 
@@ -45,20 +46,29 @@ public class GameManager : MonoBehaviour
         yearsTxt.text = ("An " + years.ToString());
     }
 
+    void ChangePopulation()
+    {
+        populationTxt.text = ("An " + population.ToString());
+    }
+
     //Functions Add or Remove values
+
     void PlusYear()
     {
         years++;
+        ChangeYear();
     }
 
     void AddPopulation(int percent)
     {
         population += ((population / 100) * percent);
+        ChangePopulation();
     }
 
     void AddDevellopment(int percent)
     {
         population += percent;
+        ChangePopulation();
     }
 
     void RemovePopulation(int percent)
