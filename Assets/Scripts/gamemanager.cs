@@ -99,6 +99,9 @@ public class GameManager : MonoBehaviour
         {
             delayCard.Remove(garbage);
         }
+
+        NewCards();
+
         if (population <= 0)
         {
             Win();
@@ -117,7 +120,6 @@ public class GameManager : MonoBehaviour
         }
         
         devellopmentSpeed = 1;
-        NewCards();
 
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
 using Febucci.UI;
+using UnityEngine.SceneManagement;
 
 public class AnimUI : MonoBehaviour
 {
@@ -122,5 +123,10 @@ public class AnimUI : MonoBehaviour
     public void PointerClick(GameObject _himself)
     {
         _himself.transform.localScale = Vector3.one * .8f;
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }
