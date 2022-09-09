@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
     //Use card
     void UseCard(CardEffect card)
     {
+        Debug.Log("is used");
         RemovePopulation(card.populationDamage);
         RemoveDevellopment(card.developmentDamage);
         devellopmentSpeed *= card.developmentSlow;

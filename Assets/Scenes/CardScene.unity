@@ -274,28 +274,16 @@ MonoBehaviour:
   endTurnButton: {fileID: 499344274}
   cardSlotTransform: {fileID: 82347837}
   cards:
-  - {fileID: 11400000, guid: 47b8eb493c316b1468cadb7edd11cd54, type: 2}
   - {fileID: 11400000, guid: de95619d89f2f5541b8b7fb817c20a99, type: 2}
-  - {fileID: 11400000, guid: e705022c500923742b2eddb20a7fddc7, type: 2}
-  - {fileID: 11400000, guid: d00e8e3707290134fa885058d668a72c, type: 2}
-  - {fileID: 11400000, guid: 187a77ddcf9df67479a51eded4e99d5d, type: 2}
   - {fileID: 11400000, guid: 314f771affc79df46bb1ddd70a823241, type: 2}
   - {fileID: 11400000, guid: f90b9770905bc6149a57d51b1aff183d, type: 2}
   - {fileID: 11400000, guid: 1189d19ee7c112d43a6607c1b92766e9, type: 2}
-  - {fileID: 11400000, guid: dd09609c73adfc6438505c3d73d8286c, type: 2}
   - {fileID: 11400000, guid: d310c44bd58d6584f91448b5ecfa7f43, type: 2}
   - {fileID: 11400000, guid: 5e3116c0b232cf444a6d8ec02be60880, type: 2}
-  - {fileID: 11400000, guid: b46d87f468586e44fb633977884452f1, type: 2}
-  - {fileID: 11400000, guid: 504382fc2f87e864b8ecc76bc869a4ee, type: 2}
-  - {fileID: 11400000, guid: 73ce80a388ea1ee4a9578206fff63d00, type: 2}
-  - {fileID: 11400000, guid: 1c6f889bd6ba7334ab0dc7ce4488845d, type: 2}
   - {fileID: 11400000, guid: 947d9453115200d42a781ac12274ad3c, type: 2}
-  - {fileID: 11400000, guid: 546e758fc859db646949c2716ca69ea0, type: 2}
   - {fileID: 11400000, guid: 2ef9ce6b922230a4994260ae4b403352, type: 2}
+  - {fileID: 11400000, guid: 1c6f889bd6ba7334ab0dc7ce4488845d, type: 2}
   drawCount: 3
-  devellopmentSpeed: 1
-  currentCard: []
-  cardKeeped: {fileID: 0}
 --- !u!4 &115851534
 Transform:
   m_ObjectHideFlags: 0
@@ -1632,6 +1620,7 @@ MonoBehaviour:
   spriteCard: {fileID: 0}
   damages: {fileID: 0}
   delayTxt: {fileID: 0}
+  durationTxt: {fileID: 0}
 --- !u!4 &1649343122
 Transform:
   m_ObjectHideFlags: 0
