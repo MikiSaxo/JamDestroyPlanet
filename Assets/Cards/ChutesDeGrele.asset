@@ -17,6 +17,8 @@ MonoBehaviour:
   description: 
   delay: 7
   duration: 1
+  spriteCard: {fileID: 21300000, guid: 9832edb84909ef94f8a94dad7a690203, type: 3}
+  spriteType: {fileID: 21300000, guid: 3f6d67f5167606b42837127a79c80d1c, type: 3}
   prefab: {fileID: 8342866291088621213, guid: 819f26871810c7c4786b9448b90c43b9, type: 3}
   populationDamage: 0
   developmentDamage: 0
