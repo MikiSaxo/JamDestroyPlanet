@@ -18,6 +18,9 @@ public class CardData : ScriptableObject
     [SerializeField] [Range(1, 10)] private int delay;
     [SerializeField] [Range(1, 10)] private int duration;
 
+    [SerializeField] private Sprite spriteCard;
+    [SerializeField] private Sprite spriteType;
+
     [SerializeField] private GameObject prefab;
 
     [Space(10)]
@@ -51,6 +54,8 @@ public class CardData : ScriptableObject
     public float DevelopmentSlow => developmentSlow;
     public float CoefMultiplicator => coefmultiplicator;
 
+    public Sprite SpriteCard => spriteCard;
+    public Sprite SpriteType => spriteType;
     public CardType TypeCard => typeCard;
 
     #endregion

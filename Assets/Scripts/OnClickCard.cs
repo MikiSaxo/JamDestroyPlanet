@@ -6,7 +6,7 @@ using System.Collections;
 public class OnClickCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
 {
     private Card card;
-    [SerializeField] private int waitingTime = 2;
+    [SerializeField] private int waitingTime = 1;
     private void Start()
     {
         card = gameObject.GetComponent<Card>();
@@ -22,13 +22,18 @@ public class OnClickCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public void OnPointerUp(PointerEventData pointerEventData)
     {
+        Debug.Log(pointerEventData.hovered.Count);
         StopCoroutine(KeepCard());
-        GameManager.PlayCard(card);
+        if(pointerEventData.hovered.Count > 0)
+        {
+            GameManager.PlayCard(card);
+        }
     }
 
     private IEnumerator KeepCard()
     {
         yield return new WaitForSeconds(waitingTime);
+        GameManager.KeepCard(card);
 
     }
 }
