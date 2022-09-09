@@ -15,8 +15,8 @@ public class CardData : ScriptableObject
     [SerializeField] private string cardName;
     [SerializeField] private string description;
 
-    [SerializeField] private int delay;
-    [SerializeField] private int duration;
+    [SerializeField] [Range(1, 10)] private int delay;
+    [SerializeField] [Range(1, 10)] private int duration;
 
     [SerializeField] private GameObject prefab;
 
