@@ -14,6 +14,7 @@ public class Card : MonoBehaviour
     [System.NonSerialized] public int developmentDamage;
     [System.NonSerialized] public float developmentSlow = 1;
 
+    [System.NonSerialized] public bool isNew = true;
     public CardData CardData => cardData;
     // Start is called before the first frame update
     public void Init(CardData data)

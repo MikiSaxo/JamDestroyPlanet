@@ -15,8 +15,8 @@ MonoBehaviour:
   typeCard: 0
   cardName: meteor
   description: wtfboom
-  delay: 0
-  duration: 0
+  delay: 1
+  duration: 1
   prefab: {fileID: 8342866291088621213, guid: 819f26871810c7c4786b9448b90c43b9, type: 3}
   populationDamage: 0
   developmentDamage: 0
