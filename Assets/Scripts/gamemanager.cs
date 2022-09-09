@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -12,11 +13,14 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI yearsTxt;
     public TextMeshProUGUI populationTxt;
+    public Image devellopmentBar;
 
 
     private void Start()
     {
         PlusYear();
+        ChangePopulation();
+        ChangeDevellopment();
     }
 
     //Launch after using a card or takin one in inventory
@@ -57,7 +61,13 @@ public class GameManager : MonoBehaviour
 
     void ChangePopulation()
     {
-        populationTxt.text = ("An " + population.ToString());
+        populationTxt.text = ("Population : " + population.ToString());
+    }
+
+    void ChangeDevellopment()
+    {
+        float fillAmount = (float)devellopmentPercentage / (float)100;
+        devellopmentBar.fillAmount = fillAmount;
     }
 
     //Functions Add or Remove values
@@ -77,6 +87,7 @@ public class GameManager : MonoBehaviour
     void AddDevellopment(int percent)
     {
         devellopmentPercentage += percent;
+        ChangeDevellopment();
     }
 
     void RemovePopulation(int percent)
@@ -88,6 +99,7 @@ public class GameManager : MonoBehaviour
     void RemoveDevellopment(int percent)
     {
         devellopmentPercentage -= percent;
+        ChangeDevellopment();
     }
 
     void Lose()
