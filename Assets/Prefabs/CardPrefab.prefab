@@ -759,6 +759,7 @@ MonoBehaviour:
   spriteCard: {fileID: 5161757825061173001}
   damages: {fileID: 9148084071011758980}
   delayTxt: {fileID: 1218875169841862341}
+  durationTxt: {fileID: 1018809453754655023}
 --- !u!114 &8878993733936025929
 MonoBehaviour:
   m_ObjectHideFlags: 0

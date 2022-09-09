@@ -53,7 +53,7 @@ public class Card : MonoBehaviour
         developmentSlow = cardData.DevelopmentSlow;
 
         delayTxt.text = (delay + gameManager.years).ToString() + "(+" + delay + ")";
-        durationTxt.text = duration.ToString() + " Turns";
+        durationTxt.text = (duration.ToString() + " Turns");
 
         spriteCard.sprite = CardData.SpriteCard;
         spriteType.sprite = CardData.SpriteType;
