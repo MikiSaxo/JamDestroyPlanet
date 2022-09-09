@@ -38,6 +38,7 @@ public class Card : MonoBehaviour
     [SerializeField] public Image spriteCard;
     [SerializeField] public Image damages;
     [SerializeField] public TextMeshProUGUI delayTxt;
+    [SerializeField] public TextMeshProUGUI durationTxt;
 
     public void Init(CardData data)
     {
@@ -52,6 +53,7 @@ public class Card : MonoBehaviour
         developmentSlow = cardData.DevelopmentSlow;
 
         delayTxt.text = (delay + gameManager.years).ToString() + "(+" + delay + ")";
+        durationTxt.text = (duration.ToString() + " Turns");
 
         spriteCard.sprite = CardData.SpriteCard;
         spriteType.sprite = CardData.SpriteType;

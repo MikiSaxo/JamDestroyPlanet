@@ -22,7 +22,6 @@ public class OnClickCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
     public void OnPointerUp(PointerEventData pointerEventData)
     {
-        Debug.Log(pointerEventData.hovered.Count);
         StopCoroutine(KeepCard());
         if(pointerEventData.hovered.Count > 0)
         {
