@@ -13,6 +13,4 @@ public class OnClickImage : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         Debug.Log(name + " No longer being clicked");
     }
-
-
 }
