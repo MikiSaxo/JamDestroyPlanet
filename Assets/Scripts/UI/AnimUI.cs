@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
+using Febucci.UI;
 
 public class AnimUI : MonoBehaviour
 {
@@ -10,6 +13,14 @@ public class AnimUI : MonoBehaviour
     [SerializeField] private GameObject[] _creditsAssets;
     [SerializeField] private float _timeEachSpawn;
     [SerializeField] private float _timeShrink;
+
+    [SerializeField] private float _scaleHoverButtons;
+    [SerializeField] private float _timeHoverButtonsOn;
+    [SerializeField] private float _timeHoverButtonsOff;
+    [SerializeField] private Color _idleColor;
+    [SerializeField] private Color _idleColorAlpha;
+    [SerializeField] private Color _selectedColor;
+    [SerializeField] private Color _selectedColorAlpha;
 
     private bool isLaunched = false;
 
@@ -92,5 +103,24 @@ public class AnimUI : MonoBehaviour
     public void StartGame()
     {
         print("ça lance le jeu ici");
+    }
+
+    public void PointerEnterButtons(GameObject _himself)
+    {
+        _himself.transform.DOScale(Vector3.one * _scaleHoverButtons, _timeHoverButtonsOn);
+        _himself.GetComponent<ButtonsNames>().parts[1].GetComponent<TextMeshProUGUI>().color = _selectedColor;
+        //_himself.GetComponent<ButtonsNames>().parts[0].GetComponent<TextMeshProUGUI>().color = _idleColorAlpha;
+    }
+
+    public void PointerExitButtons(GameObject _himself)
+    {
+        _himself.transform.DOScale(Vector3.one, _timeHoverButtonsOff);
+        //_himself.GetComponent<ButtonsNames>().parts[0].GetComponent<TextMeshProUGUI>().color = _selectedColorAlpha;
+        _himself.GetComponent<ButtonsNames>().parts[1].GetComponent<TextMeshProUGUI>().color = _selectedColorAlpha;
+    }
+
+    public void PointerClick(GameObject _himself)
+    {
+        _himself.transform.localScale = Vector3.one * .8f;
     }
 }
