@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI populationTxt;
     public Image devellopmentBar;
     public GameObject endTurnButton;
+    public Transform cardSlotTransform;
 
     [Space(10)]
     [Header("Gamerules")]
@@ -32,9 +33,11 @@ public class GameManager : MonoBehaviour
     private float devellopmentSpeed = 1;
 
 
-    private List<Card> delayCard = new List<Card>();
-    private List<Card> durationCard = new List<Card>();
+    private List<CardEffect> delayCard = new List<CardEffect>();
+    private List<CardEffect> durationCard = new List<CardEffect>();
     private List<Card> currentCard = new List<Card>();
+
+    private Card cardKeeped;
 
     private void Awake()
     {
@@ -53,39 +56,46 @@ public class GameManager : MonoBehaviour
 
     public void NextTurn()
     {
+        List<CardEffect> trashcan = new List<CardEffect>();
         endTurnButton.SetActive(false);
-        foreach (Card card in durationCard)
+        foreach (CardEffect cardEffect in durationCard)
         {
-            card.duration--;
-            if (card.duration <= 0)
+            cardEffect.duration--;
+            if (cardEffect.duration <= 0)
             {
-                durationCard.Remove(card);
-                Destroy(card.gameObject);
+                trashcan.Add(cardEffect);
             }
-            UseCard(card);
+            UseCard(cardEffect);
 
         }
 
-        foreach (Card card in delayCard)
+        foreach (CardEffect garbage in trashcan)
         {
-            card.delay--;
-            if (card.delay == 0)
-            {
-                UseCard(card);
-                card.duration--;
+            delayCard.Remove(garbage);
+        }
+        trashcan.Clear();
 
-                delayCard.Remove(card);
-                if (card.duration > 0)
+        foreach (CardEffect cardEffect in delayCard)
+        {
+            cardEffect.delay--;
+            if (cardEffect.delay == 0)
+            {
+                UseCard(cardEffect);
+                cardEffect.duration--;
+
+                if (cardEffect.duration > 0)
                 {
-                    durationCard.Add(card);
+                    durationCard.Add(cardEffect);
                 }
-                else
-                {
-                    Destroy(card.gameObject);
-                }
+
+                trashcan.Add(cardEffect);
             }
         }
 
+        foreach (CardEffect garbage in trashcan)
+        {
+            delayCard.Remove(garbage);
+        }
         if (population <= 0)
         {
             Win();
@@ -109,7 +119,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Use card
-    void UseCard(Card card)
+    void UseCard(CardEffect card)
     {
         RemovePopulation(card.populationDamage);
         RemoveDevellopment(card.developmentDamage);
@@ -198,16 +208,42 @@ public class GameManager : MonoBehaviour
 
     public static void PlayCard(Card card)
     {
-        instance.delayCard.Add(card);
+        CardEffect cardEffect = new CardEffect(card);
+        instance.delayCard.Add(cardEffect);
 
         if(card.isNew)
         {
-            instance.endTurnButton.gameObject.SetActive(true);
             foreach(Card _card in instance.currentCard)
             {
-                _card.gameObject.SetActive(false);
+                Destroy(_card.gameObject);
             }
             instance.currentCard.Clear();
+        }
+        else
+        {
+            Destroy(card.gameObject);
+            instance.cardKeeped = null;
+        }
+        instance.endTurnButton.gameObject.SetActive(true);
+    }
+
+    public static void KeepCard(Card card)
+    {
+        if(instance.cardKeeped == null)
+        {
+            card.transform.parent = instance.cardSlotTransform;
+            card.transform.position = instance.cardSlotTransform.position;
+            instance.cardKeeped = card;
+            card.isNew = false;
+            foreach (Card _card in instance.currentCard)
+            {
+                if (_card != card)
+                {
+                    Destroy(_card.gameObject);
+                }
+            }
+            instance.currentCard.Clear();
+            instance.endTurnButton.gameObject.SetActive(true);
         }
     }
 }
