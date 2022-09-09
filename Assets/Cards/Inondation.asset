@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07958f2430145d54395f7f12fbf52c73, type: 3}
-  m_Name: Meteor
+  m_Name: Inondation
   m_EditorClassIdentifier: 
   typeCard: 0
-  cardName: Meteor
+  cardName: Inondation
   description: 
-  delay: 10
-  duration: 0
+  delay: 2
+  duration: 1
   prefab: {fileID: 8342866291088621213, guid: 819f26871810c7c4786b9448b90c43b9, type: 3}
-  populationDamage: 100000
+  populationDamage: 35000
   developmentDamage: 0
   developmentSlow: 0
   coefmultiplicator: 1

@@ -34,7 +34,7 @@ public class CardData : ScriptableObject
     [Space(10)]
     [Header("Multiplicator")]
     [Space(2)]
-    [SerializeField] private int coefmultiplicator = 1;
+    [SerializeField] private float coefmultiplicator = 1;
 
     #region Getter
 
@@ -49,7 +49,7 @@ public class CardData : ScriptableObject
     public int PopulationDamage => populationDamage;
     public int DevelopmentDamage => developmentDamage;
     public float DevelopmentSlow => developmentSlow;
-    public int CoefMultiplicator => coefmultiplicator;
+    public float CoefMultiplicator => coefmultiplicator;
 
     public CardType TypeCard => typeCard;
 
