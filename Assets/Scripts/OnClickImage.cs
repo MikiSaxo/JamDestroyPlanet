@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class OnClickImage : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -12,4 +13,6 @@ public class OnClickImage : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         Debug.Log(name + " No longer being clicked");
     }
+
+
 }
