@@ -5,9 +5,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int years = 0;
-    [SerializeField] private int population = 1;
+    [SerializeField] private int years = 2021;
+    [SerializeField] private int population = 800000;
     [SerializeField] [Range(0, 100)] private float devellopmentPercentage = 0;
+    [SerializeField] private int devellopmentSpeed = 1;
 
     public TextMeshProUGUI yearsTxt;
     public TextMeshProUGUI populationTxt;
@@ -22,7 +23,6 @@ public class GameManager : MonoBehaviour
 
     void NextTurn()
     {
-        PlusYear();
         if (population <= 0)
         {
             Win();
@@ -32,6 +32,15 @@ public class GameManager : MonoBehaviour
         {
             Lose();
         }
+
+        PlusYear();
+        AddPopulation(10);
+        if(devellopmentSpeed > 0)
+        {
+            AddDevellopment(15);
+        }
+        
+        devellopmentSpeed = 1;
     }
 
     //Create cards for the next Turn
@@ -67,18 +76,18 @@ public class GameManager : MonoBehaviour
 
     void AddDevellopment(int percent)
     {
-        population += percent;
-        ChangePopulation();
+        devellopmentPercentage += percent;
     }
 
     void RemovePopulation(int percent)
     {
         population -= ((population / 100) * percent);
+        ChangePopulation();
     }
 
     void RemoveDevellopment(int percent)
     {
-        population -= percent;
+        devellopmentPercentage -= percent;
     }
 
     void Lose()
