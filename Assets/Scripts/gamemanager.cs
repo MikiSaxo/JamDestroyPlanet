@@ -9,22 +9,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int years = 2021;
     [SerializeField] private int population = 800000;
     [SerializeField] [Range(0, 100)] private float devellopmentPercentage = 0;
-<<<<<<< HEAD
     
     public TextMeshProUGUI yearsTxt;
     public TextMeshProUGUI populationTxt;
     [SerializeField] Transform canvasTrasform;
     [SerializeField] private List<CardData> cards;
     [SerializeField] private const int drawCount = 3;
-=======
+
     [SerializeField] private int devellopmentSpeed = 1;
 
-    public TextMeshProUGUI yearsTxt;
-    public TextMeshProUGUI populationTxt;
     public Image devellopmentBar;
+    private List<Card> delayCard = new List<Card>();
+    private List<Card> durationCard = new List<Card>();
 
-
->>>>>>> 73730f32ff111016da84f02aff566dba869c1af3
     private void Start()
     {
         NewCards();
@@ -37,6 +34,31 @@ public class GameManager : MonoBehaviour
 
     void NextTurn()
     {
+        foreach (Card card in durationCard)
+        {
+            card.duration--;
+            if (card.duration <= 0)
+            {
+                durationCard.Remove(card);
+            }
+            UseCard(card);
+
+        }
+
+        foreach (Card card in delayCard)
+        {
+            card.delay--;
+            if (card.delay == 0)
+            {
+                UseCard(card);
+                delayCard.Remove(card);
+                if (card.duration > 1)
+                {
+                    durationCard.Add(card);
+                }
+            }
+        }
+
         if (population <= 0)
         {
             Win();
@@ -55,15 +77,19 @@ public class GameManager : MonoBehaviour
         }
         
         devellopmentSpeed = 1;
+
+        
     }
 
-    //Create cards for the next Turn
-<<<<<<< HEAD
-    void NewCards()
-=======
+    //Use card
+    void UseCard(Card card)
+    {
+        RemovePopulation(card.populationDamage);
+        RemoveDevellopment(card.developmentDamage);
 
-    void NewCards(List<Card> Cards)
->>>>>>> 73730f32ff111016da84f02aff566dba869c1af3
+    }
+    //Create cards for the next Turn
+    void NewCards()
     {
         Canvas canvas = canvasTrasform.gameObject.GetComponent<Canvas>();
         Debug.Log(canvas.renderingDisplaySize.x);
