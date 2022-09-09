@@ -15,7 +15,7 @@ MonoBehaviour:
   typeCard: 0
   cardName: The plague
   description: La peste noire
-  delay: 3
+  delay: 0
   duration: 5
   prefab: {fileID: 8342866291088621213, guid: 819f26871810c7c4786b9448b90c43b9, type: 3}
   populationDamage: 6
